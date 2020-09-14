@@ -8,11 +8,15 @@ public class Direction {
     }
 
     public Direction turnRight() {
+        return getDirection('E', 'W');
+    }
+
+    private Direction getDirection(char e, char w) {
         switch (direction) {
             case 'N':
-                return new Direction('E');
+                return new Direction(e);
             case 'S':
-                return new Direction('W');
+                return new Direction(w);
             case 'E':
                 return new Direction('N');
             case 'W':
@@ -23,26 +27,15 @@ public class Direction {
     }
 
     public Direction turnLeft() {
-        switch (direction) {
-            case 'N':
-                return new Direction('W');
-            case 'S':
-                return new Direction('E');
-            case 'E':
-                return new Direction('N');
-            case 'W':
-                return new Direction('S');
-            default:
-                throw new IllegalArgumentException();
-        }
+        return getDirection('W', 'E');
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
 
-        Direction direction1 = (Direction) o;
+        Direction direction1 = (Direction) object;
 
         if (direction != direction1.direction) return false;
 
